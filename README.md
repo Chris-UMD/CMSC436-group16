@@ -1,2 +1,2 @@
 # CMSC436-group16
-Go-No Go (NIH)
+Christian Yi, Group 16, Go-No Go (NIH)
