@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Menu">
+    tools:context=".Menu"
+>
 
     <!-- STATS BUTTON -->
     <ImageButton
@@ -42,7 +43,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginBottom="304dp"
         android:background="#00FFFFFF"
-        android:onClick="onClickStats"
+        android:onClick="onClickPlay"
         android:scaleType="fitCenter"
         android:src="@drawable/play"
         app:layout_constraintBottom_toBottomOf="parent"

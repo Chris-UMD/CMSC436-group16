@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_menu) // UPDATE CONTENT VIEW
+        setContentView(R.layout.play) // UPDATE CONTENT VIEW
     }
+
+    // custom font: artographie_light (does not contain numbers, use Arial for numbers)
 
     // Hexcodes for Go and No-Go backgrounds:
     // WAIT: #17075A
