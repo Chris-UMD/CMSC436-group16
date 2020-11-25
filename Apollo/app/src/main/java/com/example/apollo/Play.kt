@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.play) // UPDATE CONTENT VIEW
+        setContentView(R.layout.play)
+
+        // hide title bar
+        supportActionBar!!.hide()
     }
 
     // custom font: artographie_light (does not contain numbers, use Arial for numbers)

@@ -13,41 +13,45 @@
         android:id="@+id/stats"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
         android:background="#00FFFFFF"
         android:onClick="onClickStats"
         android:scaleType="fitCenter"
         android:src="@drawable/hamburger"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
     <!-- LOGO -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         android:src="@drawable/logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
     <!-- PLAY BUTTON -->
     <ImageButton
         android:id="@+id/play"
         android:layout_width="175dp"
         android:layout_height="117dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="304dp"
+        android:gravity="center"
         android:background="#00FFFFFF"
         android:onClick="onClickPlay"
         android:scaleType="fitCenter"
         android:src="@drawable/play"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+    />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
