@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <color android:name="wait"> #17075A </color>
+    <color android:name="dont_tap"> #F734A9 </color>
+    <color android:name="tap"> #4BD8F9 </color>
+    <color android:name="success"> #8F5EEE </color>
+    <color android:name="failure"> #FF7E64 </color>
+</selector>

@@ -14,12 +14,7 @@ class Play : AppCompatActivity() {
 
     // custom font: artographie_light (does not contain numbers, use Arial for numbers)
 
-    // Hexcodes for Go and No-Go backgrounds:
-    // WAIT: #17075A
-    // DON'T TAP: #F734A9
-    // TAP: #4BD8F9
-    // SUCCESS: #8F5EEE
-    // FAILURE: #FF7E64
+    // colors for Go and No-Go backgrounds stored in res/color/colors.xml
 
     // Stats to collect:
     // - avg GO response speed
