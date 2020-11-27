@@ -25,6 +25,6 @@ class Menu : AppCompatActivity() {
     // launch Play Activity
     fun onClickPlay(v: View) {
         Toast.makeText(this, "Play button clicked!", Toast.LENGTH_SHORT).show()
-        // startActivity(Intent(applicationContext, Stats::class.java))
+        startActivity(Intent(applicationContext, Play::class.java))
     }
 }

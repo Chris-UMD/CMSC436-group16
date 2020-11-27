@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Apollo</string>
+    <string name="placeholder">PLACEHOLDER</string>
+    <string name="wait_string">WAIT</string>
+    <string name="dont_tap">DON\'T TAP!</string>
+    <string name="tap">TAP!</string>
+    <string name="success">WELL DONE!</string>
+    <string name="failure">OH NO!\nYOU TAPPED!</string>
+    <string name="failure_to_tap">OH NO!\nYOU TOOK TOO\nLONG!</string>
+    <string name="finished">FINISHED!\nTAP ANYWHERE\nTO CONTINUE</string>
+    <string name="preference_file_key">com.example.apollo.prefs</string>
 </resources>
