@@ -215,10 +215,49 @@ class Play : AppCompatActivity() {
         resultsMap.put("goSuccesses", goCount.toFloat())
         resultsMap.put("nogoSuccesses", nogoCount.toFloat())
         prefsEditor.putString("Trial$currTrial", gson.toJson(resultsMap))
+
+        // calculate and update the totals
+        var totalGoAccuracy = prefs.getFloat("totalGoAccuracy", 0f)
+        var totalNogoAccuracy = prefs.getFloat("totalNogoAccuracy", 0f)
+        var totalGoAvgSpeed = prefs.getFloat("totalGoAvgSpeed", 0f)
+        var totalGoSuccesses = prefs.getFloat("totalGoSuccesses", 0f)
+        var totalNogoSuccesses = prefs.getFloat("totalNogoSuccesses", 0f)
+
+        totalGoAccuracy = if(totalGoAccuracy == 0f) {
+            goAccuracy
+        } else {
+            (totalGoAccuracy + goAccuracy) / 2
+        }
+        totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
+            nogoAccuracy
+        } else {
+            (totalNogoAccuracy + nogoAccuracy) / 2
+        }
+        totalGoAvgSpeed = if(goAvgSpeed == 0f) {
+            totalGoAvgSpeed
+        } else {
+            if(totalGoAvgSpeed == 0f) {
+                goAvgSpeed
+            } else {
+                (totalGoAvgSpeed + goAvgSpeed) / 2
+            }
+        }
+        totalGoSuccesses += goCount
+        totalNogoSuccesses += nogoCount
+
+        prefsEditor.putFloat("totalGoAccuracy", totalGoAccuracy)
+        prefsEditor.putFloat("totalNogoAccuracy", totalNogoAccuracy)
+        prefsEditor.putFloat("totalGoAvgSpeed", totalGoAvgSpeed)
+        prefsEditor.putFloat("totalGoSuccesses", totalGoSuccesses)
+        prefsEditor.putFloat("totalNogoSuccesses", totalNogoSuccesses)
+
+        Log.i(TAG, "totalGoAccuracy = $totalGoAccuracy\ntotalNogoAccuracy = $totalNogoAccuracy\ntotalGoAvgSpeed = $totalGoAvgSpeed s" +
+                "\ntotalGoSuccesses = $totalGoSuccesses\ntotalNogoSuccesses = $totalNogoSuccesses")
+
         prefsEditor.apply()
 
         // print out new totals
-        Log.i(TAG, getTotals().toString())
+//        Log.i(TAG, getTotals().toString())
         backgroundLayout.setBackgroundResource(R.color.dark_purple)
         instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
         instructionTextView.text = getString(R.string.finished)
