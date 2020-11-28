@@ -375,6 +375,11 @@ class Play : AppCompatActivity() {
         return returnMap
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        soundPool.release()
+    }
+
     companion object {
         // tag for debugging purposes
         private const val TAG = "Project-Tag"
