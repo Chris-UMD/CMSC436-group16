@@ -57,14 +57,15 @@ class Play : AppCompatActivity() {
         supportActionBar!!.hide()
 
         // debugging purposes, clears the sharedpreference file
-//        clearPreferences()
-//        val temp = getResultsList()
+        // clearPreferences()
+        // val temp = getResultsList()
         // randomize the iterations of the game
         for(i in 0 until iterations) {
             // if i is even, then 'go'
             if(i % 2 == 0) {
                 booleanList.add(true)
                 goTotal++
+
             } else {
                 // if i is odd, then 'no go'
                 booleanList.add(false)
@@ -72,12 +73,14 @@ class Play : AppCompatActivity() {
                 nogoCount++
             }
         }
+
         booleanList.shuffle()
 
         // get a reference to the shared preference file
         prefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         // get the current trial
         currTrial = prefs.getInt("currTrial", 0)
+
         Log.i(TAG, currTrial.toString())
 
         // set up the initial wait screen
@@ -90,12 +93,13 @@ class Play : AppCompatActivity() {
         // set up onClickListener for the Constraint Layout
         backgroundLayout.setOnClickListener{
             if(finished) {
-//                startActivity(Intent(applicationContext, Menu::class.java))
+                //startActivity(Intent(applicationContext, Menu::class.java))
                 finish()
             } else {
                 // whether it is time to tap or not, record the data
                 if(!waiting) {
                     waiting = true
+
                     if (tap) {
                         mHandler.removeCallbacksAndMessages(null);
                         goCount++
@@ -103,6 +107,7 @@ class Play : AppCompatActivity() {
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
                         Log.i(TAG, "clicked within $diffTime s")
+
                         // if currIteration is greater
                         if(currIteration >= iterations) {
                             finishScreen()
@@ -112,6 +117,7 @@ class Play : AppCompatActivity() {
                             instructionTextView.text = getString(R.string.wait_string)
                             waitScreen()
                         }
+
                     } else {
                         mHandler.removeCallbacksAndMessages(null);
                         nogoCount--
@@ -142,6 +148,7 @@ class Play : AppCompatActivity() {
         tap = booleanList[currIteration]
         currIteration += 1
         waiting = false
+
         // update the UI to Tap screen
         if(tap) {
             currentTime = System.currentTimeMillis()
@@ -163,8 +170,10 @@ class Play : AppCompatActivity() {
             transitionToFinished()
             return
         }
+
         mHandler.postDelayed({
-//            Log.i(TAG, "loading wait screen")
+            // Log.i(TAG, "loading wait screen")
+
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.wait_string)
@@ -176,7 +185,9 @@ class Play : AppCompatActivity() {
     private fun transitionToFail() {
         mHandler.postDelayed({
             waiting = true
-//            Log.i(TAG, "loading failed screen")
+
+            // Log.i(TAG, "loading failed screen")
+
             backgroundLayout.setBackgroundResource(R.color.orange)
             instructionTextView.setTextColor(Color.WHITE)
             instructionTextView.text = getString(R.string.failure_to_tap)
@@ -200,11 +211,14 @@ class Play : AppCompatActivity() {
         } else {
             goAvgSpeed.roundToInt() / 1000f
         }
+
         val prefsEditor = prefs.edit()
         prefsEditor.putInt("currTrial", currTrial + 1)
         waiting = true
         finished = true
-//            Log.i(TAG, "loading finish screen")
+
+        //Log.i(TAG, "loading finish screen")
+
         Log.i(TAG, "goAccuracy = $goAccuracy\nnogoAccuracy = $nogoAccuracy\ngoAvgSpeed = $goAvgSpeed s" +
                 "\ngoSuccesses = $goCount\nnogoSuccesses = $nogoCount")
 
@@ -228,11 +242,13 @@ class Play : AppCompatActivity() {
         } else {
             ( (totalGoAccuracy * currTrial ) + goAccuracy) / (currTrial + 1)
         }
+
         totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
             nogoAccuracy
         } else {
             ( (totalNogoAccuracy * currTrial ) + nogoAccuracy) / (currTrial + 1)
         }
+
         totalGoAvgSpeed = if(goAvgSpeed == 0f) {
             totalGoAvgSpeed
         } else {
@@ -242,6 +258,7 @@ class Play : AppCompatActivity() {
                 ( (totalGoAvgSpeed * currTrial ) + goAvgSpeed) / (currTrial + 1)
             }
         }
+
         totalGoSuccesses += goCount
         totalNogoSuccesses += nogoCount
 
@@ -327,14 +344,4 @@ class Play : AppCompatActivity() {
         // tag for debugging purposes
         private const val TAG = "Project-Tag"
     }
-
-    // custom font: artographie_light (does not contain numbers, use Arial for numbers)
-
-    // colors for Go and No-Go backgrounds stored in res/color/colors.xml
-
-    // Stats to collect:
-    // - avg GO response speed
-    // - GO accuracy %
-    // - No-Go accuracy %
-
 }
