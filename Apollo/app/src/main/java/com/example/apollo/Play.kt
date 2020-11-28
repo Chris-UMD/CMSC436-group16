@@ -226,12 +226,12 @@ class Play : AppCompatActivity() {
         totalGoAccuracy = if(totalGoAccuracy == 0f) {
             goAccuracy
         } else {
-            (totalGoAccuracy + goAccuracy) / 2
+            ( (totalGoAccuracy * currTrial ) + goAccuracy) / (currTrial + 1)
         }
         totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
             nogoAccuracy
         } else {
-            (totalNogoAccuracy + nogoAccuracy) / 2
+            ( (totalNogoAccuracy * currTrial ) + nogoAccuracy) / (currTrial + 1)
         }
         totalGoAvgSpeed = if(goAvgSpeed == 0f) {
             totalGoAvgSpeed
@@ -239,7 +239,7 @@ class Play : AppCompatActivity() {
             if(totalGoAvgSpeed == 0f) {
                 goAvgSpeed
             } else {
-                (totalGoAvgSpeed + goAvgSpeed) / 2
+                ( (totalGoAvgSpeed * currTrial ) + goAvgSpeed) / (currTrial + 1)
             }
         }
         totalGoSuccesses += goCount
@@ -257,7 +257,7 @@ class Play : AppCompatActivity() {
         prefsEditor.apply()
 
         // print out new totals
-//        Log.i(TAG, getTotals().toString())
+        Log.i(TAG, getTotals().toString())
         backgroundLayout.setBackgroundResource(R.color.dark_purple)
         instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
         instructionTextView.text = getString(R.string.finished)
