@@ -19,7 +19,11 @@ class Menu : AppCompatActivity() {
     // audio systems
     private lateinit var soundPool : SoundPool // for button sound effects
     private lateinit var mediaPlayer : MediaPlayer // for background music
+
+    // sound flag
     private var launchingActivity : Boolean = false
+
+    // sound file
     private var launchSound : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

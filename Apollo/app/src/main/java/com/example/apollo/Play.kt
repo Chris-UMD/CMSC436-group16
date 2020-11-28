@@ -3,6 +3,8 @@ package com.example.apollo
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -49,12 +51,35 @@ class Play : AppCompatActivity() {
     private val tapPersistTime = 1500
     private val iterations = 10
 
+    // audio systems
+    private lateinit var soundPool : SoundPool // for button sound effects
+
+    // sound file
+    private var successSound : Int = 0
+    private var failSound : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.play)
 
         // hide title bar
         supportActionBar!!.hide()
+
+        // setup audio systems
+        val audioAttributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+
+        // initialize soundPool
+        soundPool = SoundPool.Builder()
+                .setMaxStreams(1)
+                .setAudioAttributes(audioAttributes)
+                .build()
+
+        // load sound effects
+        successSound = soundPool.load(this, R.raw.success, 1)
+        failSound = soundPool.load(this, R.raw.failure, 1)
 
         // debugging purposes, clears the sharedpreference file
         // clearPreferences()
@@ -93,16 +118,21 @@ class Play : AppCompatActivity() {
         // set up onClickListener for the Constraint Layout
         backgroundLayout.setOnClickListener{
             if(finished) {
-                //startActivity(Intent(applicationContext, Menu::class.java))
+                // startActivity(Intent(applicationContext, Menu::class.java))
                 finish()
+
             } else {
                 // whether it is time to tap or not, record the data
                 if(!waiting) {
                     waiting = true
 
                     if (tap) {
+                        // play success sound effect
+                        soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+
                         mHandler.removeCallbacksAndMessages(null);
                         goCount++
+
                         // to get the reaction time in milliseconds
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
@@ -119,6 +149,9 @@ class Play : AppCompatActivity() {
                         }
 
                     } else {
+                        // play fail sound effect
+                        soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
+
                         mHandler.removeCallbacksAndMessages(null);
                         nogoCount--
                         backgroundLayout.setBackgroundResource(R.color.orange)
@@ -173,7 +206,6 @@ class Play : AppCompatActivity() {
 
         mHandler.postDelayed({
             // Log.i(TAG, "loading wait screen")
-
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.wait_string)
@@ -187,6 +219,9 @@ class Play : AppCompatActivity() {
             waiting = true
 
             // Log.i(TAG, "loading failed screen")
+
+            // play fail sound effect
+            soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
 
             backgroundLayout.setBackgroundResource(R.color.orange)
             instructionTextView.setTextColor(Color.WHITE)
