@@ -61,7 +61,7 @@ class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.play)
-
+        clearPreferences()
         // hide title bar
         supportActionBar!!.hide()
 
@@ -133,7 +133,7 @@ class Play : AppCompatActivity() {
                         mHandler.removeCallbacksAndMessages(null);
                         goCount++
 
-                        // to get the reaction time in milliseconds
+                        // to get the reaction time in seconds
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
                         Log.i(TAG, "clicked within $diffTime s")
@@ -151,7 +151,6 @@ class Play : AppCompatActivity() {
                     } else {
                         // play fail sound effect
                         soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
-
                         mHandler.removeCallbacksAndMessages(null);
                         nogoCount--
                         backgroundLayout.setBackgroundResource(R.color.orange)
@@ -181,7 +180,6 @@ class Play : AppCompatActivity() {
         tap = booleanList[currIteration]
         currIteration += 1
         waiting = false
-
         // update the UI to Tap screen
         if(tap) {
             currentTime = System.currentTimeMillis()
@@ -193,7 +191,7 @@ class Play : AppCompatActivity() {
             backgroundLayout.setBackgroundResource(R.color.pink)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.dont_tap)
-            transitionToWait()
+            transitionToWaitNoGo()
         }
     }
 
@@ -205,7 +203,24 @@ class Play : AppCompatActivity() {
         }
 
         mHandler.postDelayed({
-            // Log.i(TAG, "loading wait screen")
+            // Log.i(TAG, "loading wait screen"))
+            backgroundLayout.setBackgroundResource(R.color.dark_purple)
+            instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
+            instructionTextView.text = getString(R.string.wait_string)
+            waiting = true
+            waitScreen()
+        }, transitionTime.toLong())
+    }
+    private fun transitionToWaitNoGo() {
+        // if currIteration is greater
+        if(currIteration >= iterations) {
+            transitionToFinishedNoGo()
+            return
+        }
+
+        mHandler.postDelayed({
+            // Log.i(TAG, "loading wait screen"))
+            soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.wait_string)
@@ -224,7 +239,7 @@ class Play : AppCompatActivity() {
             soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
 
             backgroundLayout.setBackgroundResource(R.color.orange)
-            instructionTextView.setTextColor(Color.WHITE)
+            instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.failure_to_tap)
             transitionToWait()
         }, tapPersistTime.toLong())
@@ -236,7 +251,15 @@ class Play : AppCompatActivity() {
         }, transitionTime.toLong())
     }
 
+    private fun transitionToFinishedNoGo() {
+        mHandler.postDelayed({
+            soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+            finishScreen()
+        }, transitionTime.toLong())
+    }
+
     private fun finishScreen() {
+
         goAccuracy = goCount * 100f / goTotal
         nogoAccuracy = nogoCount * 100f / nogoTotal
         goAvgSpeed = (goTotalTime * 1000f / goCount)
