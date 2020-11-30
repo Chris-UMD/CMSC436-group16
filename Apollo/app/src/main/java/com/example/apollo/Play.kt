@@ -3,6 +3,8 @@ package com.example.apollo
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -49,22 +51,46 @@ class Play : AppCompatActivity() {
     private val tapPersistTime = 1500
     private val iterations = 10
 
+    // audio systems
+    private lateinit var soundPool : SoundPool // for button sound effects
+
+    // sound file
+    private var successSound : Int = 0
+    private var failSound : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.play)
-
+        clearPreferences()
         // hide title bar
         supportActionBar!!.hide()
 
+        // setup audio systems
+        val audioAttributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+
+        // initialize soundPool
+        soundPool = SoundPool.Builder()
+                .setMaxStreams(1)
+                .setAudioAttributes(audioAttributes)
+                .build()
+
+        // load sound effects
+        successSound = soundPool.load(this, R.raw.success, 1)
+        failSound = soundPool.load(this, R.raw.failure, 1)
+
         // debugging purposes, clears the sharedpreference file
-//        clearPreferences()
-//        val temp = getResultsList()
+        // clearPreferences()
+        // val temp = getResultsList()
         // randomize the iterations of the game
         for(i in 0 until iterations) {
             // if i is even, then 'go'
             if(i % 2 == 0) {
                 booleanList.add(true)
                 goTotal++
+
             } else {
                 // if i is odd, then 'no go'
                 booleanList.add(false)
@@ -72,12 +98,14 @@ class Play : AppCompatActivity() {
                 nogoCount++
             }
         }
+
         booleanList.shuffle()
 
         // get a reference to the shared preference file
         prefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         // get the current trial
         currTrial = prefs.getInt("currTrial", 0)
+
         Log.i(TAG, currTrial.toString())
 
         // set up the initial wait screen
@@ -90,19 +118,26 @@ class Play : AppCompatActivity() {
         // set up onClickListener for the Constraint Layout
         backgroundLayout.setOnClickListener{
             if(finished) {
-//                startActivity(Intent(applicationContext, Menu::class.java))
+                // startActivity(Intent(applicationContext, Menu::class.java))
                 finish()
+
             } else {
                 // whether it is time to tap or not, record the data
                 if(!waiting) {
                     waiting = true
+
                     if (tap) {
+                        // play success sound effect
+                        soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+
                         mHandler.removeCallbacksAndMessages(null);
                         goCount++
-                        // to get the reaction time in milliseconds
+
+                        // to get the reaction time in seconds
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
                         Log.i(TAG, "clicked within $diffTime s")
+
                         // if currIteration is greater
                         if(currIteration >= iterations) {
                             finishScreen()
@@ -112,7 +147,10 @@ class Play : AppCompatActivity() {
                             instructionTextView.text = getString(R.string.wait_string)
                             waitScreen()
                         }
+
                     } else {
+                        // play fail sound effect
+                        soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
                         mHandler.removeCallbacksAndMessages(null);
                         nogoCount--
                         backgroundLayout.setBackgroundResource(R.color.orange)
@@ -153,7 +191,7 @@ class Play : AppCompatActivity() {
             backgroundLayout.setBackgroundResource(R.color.pink)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.dont_tap)
-            transitionToWait()
+            transitionToWaitNoGo()
         }
     }
 
@@ -163,8 +201,26 @@ class Play : AppCompatActivity() {
             transitionToFinished()
             return
         }
+
         mHandler.postDelayed({
-//            Log.i(TAG, "loading wait screen")
+            // Log.i(TAG, "loading wait screen"))
+            backgroundLayout.setBackgroundResource(R.color.dark_purple)
+            instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
+            instructionTextView.text = getString(R.string.wait_string)
+            waiting = true
+            waitScreen()
+        }, transitionTime.toLong())
+    }
+    private fun transitionToWaitNoGo() {
+        // if currIteration is greater
+        if(currIteration >= iterations) {
+            transitionToFinishedNoGo()
+            return
+        }
+
+        mHandler.postDelayed({
+            // Log.i(TAG, "loading wait screen"))
+            soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.wait_string)
@@ -176,9 +232,14 @@ class Play : AppCompatActivity() {
     private fun transitionToFail() {
         mHandler.postDelayed({
             waiting = true
-//            Log.i(TAG, "loading failed screen")
+
+            // Log.i(TAG, "loading failed screen")
+
+            // play fail sound effect
+            soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
+
             backgroundLayout.setBackgroundResource(R.color.orange)
-            instructionTextView.setTextColor(Color.WHITE)
+            instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.failure_to_tap)
             transitionToWait()
         }, tapPersistTime.toLong())
@@ -190,7 +251,15 @@ class Play : AppCompatActivity() {
         }, transitionTime.toLong())
     }
 
+    private fun transitionToFinishedNoGo() {
+        mHandler.postDelayed({
+            soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+            finishScreen()
+        }, transitionTime.toLong())
+    }
+
     private fun finishScreen() {
+
         goAccuracy = goCount * 100f / goTotal
         nogoAccuracy = nogoCount * 100f / nogoTotal
         goAvgSpeed = (goTotalTime * 1000f / goCount)
@@ -200,11 +269,14 @@ class Play : AppCompatActivity() {
         } else {
             goAvgSpeed.roundToInt() / 1000f
         }
+
         val prefsEditor = prefs.edit()
         prefsEditor.putInt("currTrial", currTrial + 1)
         waiting = true
         finished = true
-//            Log.i(TAG, "loading finish screen")
+
+        //Log.i(TAG, "loading finish screen")
+
         Log.i(TAG, "goAccuracy = $goAccuracy\nnogoAccuracy = $nogoAccuracy\ngoAvgSpeed = $goAvgSpeed s" +
                 "\ngoSuccesses = $goCount\nnogoSuccesses = $nogoCount")
 
@@ -226,22 +298,25 @@ class Play : AppCompatActivity() {
         totalGoAccuracy = if(totalGoAccuracy == 0f) {
             goAccuracy
         } else {
-            (totalGoAccuracy + goAccuracy) / 2
+            ( (totalGoAccuracy * currTrial ) + goAccuracy) / (currTrial + 1)
         }
+
         totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
             nogoAccuracy
         } else {
-            (totalNogoAccuracy + nogoAccuracy) / 2
+            ( (totalNogoAccuracy * currTrial ) + nogoAccuracy) / (currTrial + 1)
         }
+
         totalGoAvgSpeed = if(goAvgSpeed == 0f) {
             totalGoAvgSpeed
         } else {
             if(totalGoAvgSpeed == 0f) {
                 goAvgSpeed
             } else {
-                (totalGoAvgSpeed + goAvgSpeed) / 2
+                ( (totalGoAvgSpeed * currTrial ) + goAvgSpeed) / (currTrial + 1)
             }
         }
+
         totalGoSuccesses += goCount
         totalNogoSuccesses += nogoCount
 
@@ -257,7 +332,7 @@ class Play : AppCompatActivity() {
         prefsEditor.apply()
 
         // print out new totals
-//        Log.i(TAG, getTotals().toString())
+        Log.i(TAG, getTotals().toString())
         backgroundLayout.setBackgroundResource(R.color.dark_purple)
         instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
         instructionTextView.text = getString(R.string.finished)
@@ -323,18 +398,13 @@ class Play : AppCompatActivity() {
         return returnMap
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        soundPool.release()
+    }
+
     companion object {
         // tag for debugging purposes
         private const val TAG = "Project-Tag"
     }
-
-    // custom font: artographie_light (does not contain numbers, use Arial for numbers)
-
-    // colors for Go and No-Go backgrounds stored in res/color/colors.xml
-
-    // Stats to collect:
-    // - avg GO response speed
-    // - GO accuracy %
-    // - No-Go accuracy %
-
 }
