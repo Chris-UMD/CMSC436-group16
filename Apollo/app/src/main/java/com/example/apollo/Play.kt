@@ -54,6 +54,7 @@ class Play : AppCompatActivity() {
     // audio systems
     private lateinit var soundPool : SoundPool // for button sound effects
 
+
     // sound file
     private var successSound : Int = 0
     private var failSound : Int = 0
@@ -61,7 +62,7 @@ class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.play)
-        clearPreferences()
+//        clearPreferences()
         // hide title bar
         supportActionBar!!.hide()
 
@@ -106,7 +107,7 @@ class Play : AppCompatActivity() {
         // get the current trial
         currTrial = prefs.getInt("currTrial", 0)
 
-        Log.i(TAG, currTrial.toString())
+//        Log.i(TAG, "currTrial: $currTrial")
 
         // set up the initial wait screen
         instructionTextView = findViewById(R.id.instruction_text)
@@ -118,9 +119,7 @@ class Play : AppCompatActivity() {
         // set up onClickListener for the Constraint Layout
         backgroundLayout.setOnClickListener{
             if(finished) {
-                // startActivity(Intent(applicationContext, Menu::class.java))
                 finish()
-
             } else {
                 // whether it is time to tap or not, record the data
                 if(!waiting) {
@@ -136,7 +135,7 @@ class Play : AppCompatActivity() {
                         // to get the reaction time in seconds
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
-                        Log.i(TAG, "clicked within $diffTime s")
+//                        Log.i(TAG, "clicked within $diffTime s")
 
                         // if currIteration is greater
                         if(currIteration >= iterations) {
@@ -275,10 +274,21 @@ class Play : AppCompatActivity() {
         waiting = true
         finished = true
 
+
+        var goExclude = 0
+        if(goAvgSpeed == 0f) {
+            goExclude = prefs.getInt("goExclude", 0) + 1
+            prefsEditor.putInt("goExclude", goExclude)
+        } else {
+            goExclude = prefs.getInt("goExclude", 0)
+        }
+
+//        Log.i(TAG, "goExclude: $goExclude")
+
         //Log.i(TAG, "loading finish screen")
 
-        Log.i(TAG, "goAccuracy = $goAccuracy\nnogoAccuracy = $nogoAccuracy\ngoAvgSpeed = $goAvgSpeed s" +
-                "\ngoSuccesses = $goCount\nnogoSuccesses = $nogoCount")
+//        Log.i(TAG, "goAccuracy = $goAccuracy\nnogoAccuracy = $nogoAccuracy\ngoAvgSpeed = $goAvgSpeed s" +
+//                "\ngoSuccesses = $goCount\nnogoSuccesses = $nogoCount")
 
         // individual trials being stored
         resultsMap.put("goAccuracy", goAccuracy)
@@ -289,19 +299,19 @@ class Play : AppCompatActivity() {
         prefsEditor.putString("Trial$currTrial", gson.toJson(resultsMap))
 
         // calculate and update the totals
-        var totalGoAccuracy = prefs.getFloat("totalGoAccuracy", 0f)
-        var totalNogoAccuracy = prefs.getFloat("totalNogoAccuracy", 0f)
+        var totalGoAccuracy = prefs.getFloat("totalGoAccuracy", -1f)
+        var totalNogoAccuracy = prefs.getFloat("totalNogoAccuracy", -1f)
         var totalGoAvgSpeed = prefs.getFloat("totalGoAvgSpeed", 0f)
         var totalGoSuccesses = prefs.getFloat("totalGoSuccesses", 0f)
         var totalNogoSuccesses = prefs.getFloat("totalNogoSuccesses", 0f)
 
-        totalGoAccuracy = if(totalGoAccuracy == 0f) {
+        totalGoAccuracy = if(totalGoAccuracy == -1f) {
             goAccuracy
         } else {
             ( (totalGoAccuracy * currTrial ) + goAccuracy) / (currTrial + 1)
         }
 
-        totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
+        totalNogoAccuracy = if(totalNogoAccuracy == -1f) {
             nogoAccuracy
         } else {
             ( (totalNogoAccuracy * currTrial ) + nogoAccuracy) / (currTrial + 1)
@@ -310,11 +320,7 @@ class Play : AppCompatActivity() {
         totalGoAvgSpeed = if(goAvgSpeed == 0f) {
             totalGoAvgSpeed
         } else {
-            if(totalGoAvgSpeed == 0f) {
-                goAvgSpeed
-            } else {
-                ( (totalGoAvgSpeed * currTrial ) + goAvgSpeed) / (currTrial + 1)
-            }
+            ( (totalGoAvgSpeed * (currTrial - goExclude) ) + goAvgSpeed) / (currTrial + 1 - goExclude)
         }
 
         totalGoSuccesses += goCount
@@ -326,13 +332,13 @@ class Play : AppCompatActivity() {
         prefsEditor.putFloat("totalGoSuccesses", totalGoSuccesses)
         prefsEditor.putFloat("totalNogoSuccesses", totalNogoSuccesses)
 
-        Log.i(TAG, "totalGoAccuracy = $totalGoAccuracy\ntotalNogoAccuracy = $totalNogoAccuracy\ntotalGoAvgSpeed = $totalGoAvgSpeed s" +
-                "\ntotalGoSuccesses = $totalGoSuccesses\ntotalNogoSuccesses = $totalNogoSuccesses")
+//        Log.i(TAG, "totalGoAccuracy = $totalGoAccuracy\ntotalNogoAccuracy = $totalNogoAccuracy\ntotalGoAvgSpeed = $totalGoAvgSpeed s" +
+//                "\ntotalGoSuccesses = $totalGoSuccesses\ntotalNogoSuccesses = $totalNogoSuccesses")
 
         prefsEditor.apply()
 
         // print out new totals
-        Log.i(TAG, getTotals().toString())
+//        Log.i(TAG, getTotals().toString())
         backgroundLayout.setBackgroundResource(R.color.dark_purple)
         instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
         instructionTextView.text = getString(R.string.finished)
@@ -400,11 +406,12 @@ class Play : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mHandler.removeCallbacksAndMessages(null);
         soundPool.release()
     }
 
     companion object {
         // tag for debugging purposes
-        private const val TAG = "Project-Tag"
+        public const val TAG = "Project-Tag"
     }
 }

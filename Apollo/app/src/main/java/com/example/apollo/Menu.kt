@@ -1,5 +1,6 @@
 package com.example.apollo
 
+import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.MediaPlayer
@@ -100,4 +101,14 @@ class Menu : AppCompatActivity() {
         soundPool.release()
         mediaPlayer.release()
     }
+
+//    // temp for debugging
+//    public fun clearPreferences(v: View) {
+//        Log.i(Play.TAG, "cleared preferences")
+//        val prefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+//        val prefsEditor = prefs.edit()
+//        prefsEditor.clear()
+//        prefsEditor.apply()
+//    }
+
 }
