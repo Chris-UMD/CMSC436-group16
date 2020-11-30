@@ -7,41 +7,88 @@
 
     <TextView
         android:id="@+id/avg_speed"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="80dp"
-        android:alpha="0.5"
         android:background="#34e8eb"
         android:fontFamily="@font/artographie_light"
-        android:text="Hello"
+        android:text="Average GO Response Speed:"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:alpha=".8"
         app:layout_constraintBottom_toTopOf="@id/go_accuracy"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/avg_speed_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arial"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@id/avg_speed"
+        app:layout_constraintLeft_toLeftOf="@id/avg_speed"
+        app:layout_constraintRight_toRightOf="@id/avg_speed"
+        app:layout_constraintTop_toTopOf="@id/avg_speed"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/go_accuracy"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="80dp"
-        android:alpha="0.5"
         android:background="#9b72e8"
         android:fontFamily="@font/artographie_light"
-        android:text="Hi"
+        android:text="Average GO Accuracy:"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:alpha=".8"
         app:layout_constraintBottom_toTopOf="@id/no_go_accuracy"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avg_speed" />
 
     <TextView
+        android:id="@+id/avg_accuracy_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arial"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/go_accuracy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/go_accuracy"
+        app:layout_constraintRight_toRightOf="@+id/go_accuracy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/go_accuracy"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
         android:id="@+id/no_go_accuracy"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="80dp"
-        android:alpha="0.5"
         android:background="#e0695c"
         android:fontFamily="@font/artographie_light"
-        android:text="Hey"
+        android:text="Average NO-GO Accuracy:"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/go_accuracy" />
+
+    <TextView
+        android:id="@+id/no_go_accuracy_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arial"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/no_go_accuracy"
+        app:layout_constraintLeft_toLeftOf="@+id/no_go_accuracy"
+        app:layout_constraintRight_toRightOf="@+id/no_go_accuracy"
+        app:layout_constraintTop_toTopOf="@+id/no_go_accuracy"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

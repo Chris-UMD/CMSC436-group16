@@ -13,13 +13,10 @@
         <activity android:name=".Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity android:name=".Play"/>
-        <activity android:name=".Stats"/>
     </application>
-
 </manifest>
