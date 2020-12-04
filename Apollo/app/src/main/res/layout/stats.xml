@@ -5,6 +5,21 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
+    <!-- STATS BUTTON -->
+    <ImageButton
+        android:id="@+id/clear"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:background="#00FFFFFF"
+        android:onClick="onClickClear"
+        android:scaleType="fitCenter"
+        android:src="@drawable/trash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    />
+
     <TextView
         android:id="@+id/avg_speed"
         android:layout_width="300dp"
