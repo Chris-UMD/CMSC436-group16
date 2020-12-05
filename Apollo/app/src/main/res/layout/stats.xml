@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_stats">
+    android:background="@drawable/background_stats"
+    android:id="@+id/stats_layout">
 
     <!-- CLEAR STATS BUTTON -->
     <ImageButton
         android:id="@+id/clear"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
         android:background="#00FFFFFF"
         android:onClick="onClickClear"
         android:scaleType="fitCenter"
@@ -78,7 +80,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
     <!-- GO AVERAGE TITLE -->
     <TextView
@@ -104,7 +107,7 @@
         android:layout_marginLeft="5dp"
         android:background="@color/light_blue"
         android:fontFamily="@font/arial"
-        android:text="X%"
+        android:text="N/A"
         android:textSize="18dp"
         android:gravity="center"
         android:scaleType="fitCenter"
@@ -137,7 +140,7 @@
         android:layout_marginLeft="5dp"
         android:background="@color/light_blue"
         android:fontFamily="@font/arial"
-        android:text="X sec"
+        android:text="N/A"
         android:textSize="18dp"
         android:gravity="center"
         android:scaleType="fitCenter"
@@ -170,7 +173,7 @@
         android:layout_marginLeft="5dp"
         android:background="@color/pink"
         android:fontFamily="@font/arial"
-        android:text="X%"
+        android:text="N/A"
         android:textSize="18dp"
         android:gravity="center"
         android:scaleType="fitCenter"
@@ -179,18 +182,157 @@
         app:layout_constraintTop_toBottomOf="@id/go_title"
     />
 
-    <!-- SESSION LIST START MARKER -->
+    <!-- NO STATS NOTIFICATION -->
     <TextView
+        android:id="@+id/no_stats"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/artographie_light"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:text="PLAY APOLLO TO\nHAVE YOUR STATS\nDISPLAYED HERE"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+    />
+
+    <!-- SESSION LIST START MARKER -->
+    <ImageView
         android:id="@+id/session_start"
         android:layout_width="375dp"
         android:layout_height="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avg_accuracy_num"
+    />
+
+    <!-- SESSION DATA 1 -->
+    <ImageView
+        android:id="@+id/event1"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/session_start"
+    />
+
+    <!-- SESSION DATA 2 -->
+    <ImageView
+        android:id="@+id/event2"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event1"
+    />
+
+    <!-- SESSION DATA 3 -->
+    <ImageView
+        android:id="@+id/event3"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event2"
+    />
+
+    <!-- SESSION DATA 4 -->
+    <ImageView
+        android:id="@+id/event4"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event3"
+    />
+
+    <!-- SESSION DATA 5 -->
+    <ImageView
+        android:id="@+id/event5"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event4"
+    />
+
+    <!-- SESSION DATA 6 -->
+    <ImageView
+        android:id="@+id/event6"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event5"
+    />
+
+    <!-- SESSION DATA 7 -->
+    <ImageView
+        android:id="@+id/event7"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event6"
+    />
+
+    <!-- SESSION DATA 8 -->
+    <ImageView
+        android:id="@+id/event8"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event7"
+    />
+
+    <!-- SESSION DATA 9 -->
+    <ImageView
+        android:id="@+id/event9"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event8"
+    />
+
+    <!-- SESSION DATA 10 -->
+    <ImageView
+        android:id="@+id/event10"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/go_success"
+        app:layout_constraintStart_toStartOf="@id/session_start"
+        app:layout_constraintTop_toBottomOf="@id/event9"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
