@@ -52,13 +52,13 @@ class Stats : AppCompatActivity() {
         val preferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
         if (preferences.contains("totalGoAccuracy")) {
-            avgAccuracyNumTextView.text = preferences.getFloat("totalGoAccuracy", 0f).toString()
+            avgAccuracyNumTextView.text = preferences.getFloat("totalGoAccuracy", 0f).toString() + "%"
             avgSpeedNumTextView.text = preferences.getFloat("totalGoAvgSpeed", 0f).toString() + " MS"
-            avgNoGoAccuracyNumTextView.text = preferences.getFloat("totalNogoAccuracy", 0f).toString()
+            avgNoGoAccuracyNumTextView.text = preferences.getFloat("totalNogoAccuracy", 0f).toString() + "%"
         } else {
-            avgAccuracyNumTextView.text = "0"
-            avgSpeedNumTextView.text = "0"
-            avgNoGoAccuracyNumTextView.text = "0"
+            avgAccuracyNumTextView.text = "N/A"
+            avgSpeedNumTextView.text = "N/A"
+            avgNoGoAccuracyNumTextView.text = "N/A"
         }
     }
 
