@@ -53,7 +53,7 @@ class Stats : AppCompatActivity() {
 
         if (preferences.contains("totalGoAccuracy")) {
             avgAccuracyNumTextView.text = preferences.getFloat("totalGoAccuracy", 0f).toString()
-            avgSpeedNumTextView.text = preferences.getFloat("totalGoAvgSpeed", 0f).toString()
+            avgSpeedNumTextView.text = preferences.getFloat("totalGoAvgSpeed", 0f).toString() + " MS"
             avgNoGoAccuracyNumTextView.text = preferences.getFloat("totalNogoAccuracy", 0f).toString()
         } else {
             avgAccuracyNumTextView.text = "0"
