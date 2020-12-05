@@ -53,7 +53,7 @@ class Stats : AppCompatActivity() {
 
         if (preferences.contains("totalGoAccuracy")) {
             avgAccuracyNumTextView.text = preferences.getFloat("totalGoAccuracy", 0f).toString() + "%"
-            avgSpeedNumTextView.text = preferences.getFloat("totalGoAvgSpeed", 0f).toString() + " MS"
+            avgSpeedNumTextView.text = preferences.getFloat("totalGoAvgSpeed", 0f).toString() + " sec"
             avgNoGoAccuracyNumTextView.text = preferences.getFloat("totalNogoAccuracy", 0f).toString() + "%"
         } else {
             avgAccuracyNumTextView.text = "N/A"
@@ -79,7 +79,7 @@ class Stats : AppCompatActivity() {
 
     // return to main menu
     fun onClickBack(v: View) {
-        startActivity(Intent(applicationContext, Menu::class.java))
+        onBackPressed()
     }
 
     override fun onDestroy() {
