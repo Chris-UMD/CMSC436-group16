@@ -1,6 +1,7 @@
 package com.example.apollo
 
 import android.content.Context
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.media.SoundPool
@@ -74,6 +75,11 @@ class Stats : AppCompatActivity() {
         displayStats()
 
         Toast.makeText(applicationContext, "Data cleared!", Toast.LENGTH_SHORT).show()
+    }
+
+    // return to main menu
+    fun onClickBack(v: View) {
+        startActivity(Intent(applicationContext, Menu::class.java))
     }
 
     override fun onDestroy() {

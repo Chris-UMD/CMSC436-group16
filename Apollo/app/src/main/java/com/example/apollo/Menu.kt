@@ -56,9 +56,9 @@ class Menu : AppCompatActivity() {
 
     // launch Stats Activity
     fun onClickStats(v: View) {
-        Toast.makeText(this, "Stats button clicked!", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Stats button clicked!", Toast.LENGTH_SHORT).show()
         launchingActivity = true
-         startActivity(Intent(applicationContext, Stats::class.java))
+        startActivity(Intent(applicationContext, Stats::class.java))
     }
 
     // launch Play Activity
