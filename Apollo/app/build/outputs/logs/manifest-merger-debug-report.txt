@@ -80,6 +80,8 @@ ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\ma
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:19-40
 activity#com.example.apollo.Menu
 ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:9-18:20
+	android:configChanges
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:40-86
 	android:name
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:19-39
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER

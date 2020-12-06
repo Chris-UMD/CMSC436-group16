@@ -20,7 +20,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.Apollo" >
         <activity android:name="com.example.apollo.Stats" />
-        <activity android:name="com.example.apollo.Menu" >
+        <activity
+            android:name="com.example.apollo.Menu"
+            android:configChanges="orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

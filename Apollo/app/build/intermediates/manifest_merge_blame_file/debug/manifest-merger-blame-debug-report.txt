@@ -32,26 +32,29 @@
 22        <activity android:name="com.example.apollo.Stats" />
 22-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:9-43
 22-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:19-40
-23        <activity android:name="com.example.apollo.Menu" >
+23        <activity
 23-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:9-18:20
-23-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:19-39
-24            <intent-filter>
-24-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:14:13-17:29
-25                <action android:name="android.intent.action.MAIN" />
-25-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:17-69
-25-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:25-66
-26
-27                <category android:name="android.intent.category.LAUNCHER" />
-27-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:17-77
-27-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:27-74
-28            </intent-filter>
-29        </activity>
-30        <activity
-30-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:9-88
-31            android:name="com.example.apollo.Play"
-31-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:19-39
-32            android:configChanges="orientation|screenSize" />
-32-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:40-86
-33    </application>
-34
-35</manifest>
+24            android:name="com.example.apollo.Menu"
+24-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:19-39
+25            android:configChanges="orientation|screenSize" >
+25-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:40-86
+26            <intent-filter>
+26-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:14:13-17:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:17-69
+27-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:17-77
+29-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity
+32-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:9-88
+33            android:name="com.example.apollo.Play"
+33-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:19-39
+34            android:configChanges="orientation|screenSize" />
+34-->C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:40-86
+35    </application>
+36
+37</manifest>
