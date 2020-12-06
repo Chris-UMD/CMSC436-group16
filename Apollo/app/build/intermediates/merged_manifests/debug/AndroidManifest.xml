@@ -21,10 +21,12 @@
         android:theme="@style/Theme.Apollo" >
         <activity
             android:name="com.example.apollo.Stats"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.apollo.Menu"
-            android:configChanges="orientation|screenSize" >
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

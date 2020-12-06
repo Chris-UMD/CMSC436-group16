@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\a8f3ef74a3a6b0c090efeb50aba42b3a\jetified-core-ktx-1.3.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\8fcaf3e7a412c559bc02fc66caab7662\material-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\81bab53bcbce144f64375ae6c545efa8\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
@@ -33,25 +33,25 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Christian\.gr
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\12ad8c97ddacf629ac0cdd2ef1b34a2c\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\8cdaa82a4283de65b0384e1572224cbb\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\0641606da2593114a969563a59b50e3f\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-22:12
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:5:5-21:19
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:5:5-26:19
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\8fcaf3e7a412c559bc02fc66caab7662\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\8fcaf3e7a412c559bc02fc66caab7662\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Christian\.gradle\caches\transforms-2\files-2.1\81bab53bcbce144f64375ae6c545efa8\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -75,33 +75,37 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Ch
 	android:theme
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:11:9-44
 activity#com.example.apollo.Stats
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:9-89
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:9-15:52
+	android:screenOrientation
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:13-49
 	android:configChanges
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:41-87
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:14:13-59
 	android:name
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:19-40
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:13-34
 activity#com.example.apollo.Menu
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:9-18:20
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:9-23:20
+	android:screenOrientation
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:18:13-49
 	android:configChanges
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:40-86
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:17:13-59
 	android:name
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:13:19-39
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:19-39
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:14:13-17:29
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:17-69
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:15:25-66
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:17-77
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:16:27-74
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:21:27-74
 activity#com.example.apollo.Play
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:9-88
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:25:9-88
 	android:configChanges
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:40-86
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:25:40-86
 	android:name
-		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:20:19-39
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:25:19-39
 uses-sdk
 INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml
