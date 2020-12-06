@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Apollo" >
-        <activity android:name="com.example.apollo.Stats" />
+        <activity
+            android:name="com.example.apollo.Stats"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="com.example.apollo.Menu"
             android:configChanges="orientation|screenSize" >

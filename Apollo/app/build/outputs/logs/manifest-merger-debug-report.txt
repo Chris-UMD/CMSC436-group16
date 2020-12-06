@@ -75,7 +75,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Ch
 	android:theme
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:11:9-44
 activity#com.example.apollo.Stats
-ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:9-43
+ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:9-89
+	android:configChanges
+		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:41-87
 	android:name
 		ADDED from C:\Users\Christian\Documents\GitHub\CMSC436-group16\Apollo\app\src\main\AndroidManifest.xml:12:19-40
 activity#com.example.apollo.Menu
