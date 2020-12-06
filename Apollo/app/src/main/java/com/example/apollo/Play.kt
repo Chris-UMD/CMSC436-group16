@@ -14,15 +14,18 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
+import com.google.gson.internal.LinkedTreeMap
 import java.util.*
 import kotlin.math.roundToInt
 
 class Play : AppCompatActivity() {
 
-    lateinit var instructionTextView: TextView
-    lateinit var backgroundLayout: ConstraintLayout
-    lateinit var mHandler: Handler
-    lateinit var prefs: SharedPreferences
+    private lateinit var instructionTextView: TextView
+    private lateinit var backgroundLayout: ConstraintLayout
+    private lateinit var mHandler: Handler
+    private lateinit var prefs: SharedPreferences
+    // list of the last ten results, index 0 is oldest, index 10 is the newest
+    private lateinit var fixedSizeList : ArrayList<LinkedTreeMap<String, Float>>
 
     private var finished = false
     private var waiting = true
@@ -61,7 +64,6 @@ class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.play)
-        // clearPreferences()
         // hide title bar
         supportActionBar!!.hide()
 
@@ -105,8 +107,15 @@ class Play : AppCompatActivity() {
         prefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         // get the current trial
         currTrial = prefs.getInt("currTrial", 0)
-
         Log.i(TAG, currTrial.toString())
+
+        // gets the list
+        fixedSizeList = if(!prefs.contains("lastTen")) {
+            ArrayList<LinkedTreeMap<String, Float>>()
+        } else {
+            val tempStr = prefs.getString("lastTen", "")
+            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
+        }
 
         // set up the initial wait screen
         instructionTextView = findViewById(R.id.instruction_text)
@@ -126,6 +135,11 @@ class Play : AppCompatActivity() {
                 if(!waiting) {
                     waiting = true
 
+                    // remove the oldest result
+                    if(fixedSizeList.size == 10) {
+                        fixedSizeList.removeAt(0)
+                    }
+
                     if (tap) {
                         // play success sound effect
                         soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
@@ -137,6 +151,16 @@ class Play : AppCompatActivity() {
                         val diffTime = (System.currentTimeMillis() - currentTime) / 1000f
                         goTotalTime += diffTime
                         Log.i(TAG, "clicked within $diffTime s")
+
+                        // add a new result
+                        val tempMap = LinkedTreeMap<String, Float>()
+                        // 1f is true, 0f is false
+                        tempMap["Go"] = 1f
+                        // stores the goSpeed
+                        tempMap["goSpeed"] = diffTime * 1000f
+                        // 1f is true, 0f is false
+                        tempMap["Success"] = 1f
+                        fixedSizeList.add(tempMap)
 
                         // if currIteration is greater
                         if(currIteration >= iterations) {
@@ -151,6 +175,15 @@ class Play : AppCompatActivity() {
                     } else {
                         // play fail sound effect
                         soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
+
+                        // add a new result
+                        val tempMap = LinkedTreeMap<String, Float>()
+                        // 1f is true, 0f is false
+                        tempMap["Go"] = 0f
+                        // 1f is true, 0f is false
+                        tempMap["Success"] = 0f
+                        fixedSizeList.add(tempMap)
+
                         mHandler.removeCallbacksAndMessages(null);
                         nogoCount--
                         backgroundLayout.setBackgroundResource(R.color.orange)
@@ -212,6 +245,11 @@ class Play : AppCompatActivity() {
         }, transitionTime.toLong())
     }
     private fun transitionToWaitNoGo() {
+        // remove the oldest result
+        if(fixedSizeList.size == 10) {
+            fixedSizeList.removeAt(0)
+        }
+
         // if currIteration is greater
         if(currIteration >= iterations) {
             transitionToFinishedNoGo()
@@ -221,6 +259,15 @@ class Play : AppCompatActivity() {
         mHandler.postDelayed({
             // Log.i(TAG, "loading wait screen"))
             soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+
+            // add a new result
+            val tempMap = LinkedTreeMap<String, Float>()
+            // 1f is true, 0f is false
+            tempMap["Go"] = 0f
+            // 1f is true, 0f is false
+            tempMap["Success"] = 1f
+            fixedSizeList.add(tempMap)
+
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.wait_string)
@@ -238,6 +285,19 @@ class Play : AppCompatActivity() {
             // play fail sound effect
             soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
 
+            // remove the oldest result
+            if(fixedSizeList.size == 10) {
+                fixedSizeList.removeAt(0)
+            }
+
+            // add a new result
+            val tempMap = LinkedTreeMap<String, Float>()
+            // 1f is true, 0f is false
+            tempMap["Go"] = 1f
+            // 1f is true, 0f is false
+            tempMap["Success"] = 0f
+            fixedSizeList.add(tempMap)
+
             backgroundLayout.setBackgroundResource(R.color.orange)
             instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
             instructionTextView.text = getString(R.string.failure_to_tap)
@@ -254,6 +314,15 @@ class Play : AppCompatActivity() {
     private fun transitionToFinishedNoGo() {
         mHandler.postDelayed({
             soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
+
+            // add a new result
+            val tempMap = LinkedTreeMap<String, Float>()
+            // 1f is true, 0f is false
+            tempMap["Go"] = 0f
+            // 1f is true, 0f is false
+            tempMap["Success"] = 1f
+            fixedSizeList.add(tempMap)
+
             finishScreen()
         }, transitionTime.toLong())
     }
@@ -280,13 +349,15 @@ class Play : AppCompatActivity() {
         Log.i(TAG, "goAccuracy = $goAccuracy\nnogoAccuracy = $nogoAccuracy\ngoAvgSpeed = $goAvgSpeed s" +
                 "\ngoSuccesses = $goCount\nnogoSuccesses = $nogoCount")
 
+//        getResults()
         // individual trials being stored
-        resultsMap.put("goAccuracy", goAccuracy)
-        resultsMap.put("nogoAccuracy", nogoAccuracy)
-        resultsMap.put("goAvgSpeed", goAvgSpeed)
-        resultsMap.put("goSuccesses", goCount.toFloat())
-        resultsMap.put("nogoSuccesses", nogoCount.toFloat())
+        resultsMap["goAccuracy"] = goAccuracy
+        resultsMap["nogoAccuracy"] = nogoAccuracy
+        resultsMap["goAvgSpeed"] = goAvgSpeed
+        resultsMap["goSuccesses"] = goCount.toFloat()
+        resultsMap["nogoSuccesses"] = nogoCount.toFloat()
         prefsEditor.putString("Trial$currTrial", gson.toJson(resultsMap))
+        prefsEditor.putString("lastTen", gson.toJson(fixedSizeList))
 
         // calculate and update the totals
         var totalGoAccuracy = prefs.getFloat("totalGoAccuracy", 0f)
@@ -295,17 +366,11 @@ class Play : AppCompatActivity() {
         var totalGoSuccesses = prefs.getFloat("totalGoSuccesses", 0f)
         var totalNogoSuccesses = prefs.getFloat("totalNogoSuccesses", 0f)
 
-        totalGoAccuracy = if(totalGoAccuracy == 0f) {
-            goAccuracy
-        } else {
+        totalGoAccuracy =
             ( (totalGoAccuracy * currTrial ) + goAccuracy) / (currTrial + 1)
-        }
 
-        totalNogoAccuracy = if(totalNogoAccuracy == 0f) {
-            nogoAccuracy
-        } else {
+        totalNogoAccuracy =
             ( (totalNogoAccuracy * currTrial ) + nogoAccuracy) / (currTrial + 1)
-        }
 
         totalGoAvgSpeed = if(goAvgSpeed == 0f) {
             totalGoAvgSpeed
@@ -332,76 +397,103 @@ class Play : AppCompatActivity() {
         prefsEditor.apply()
 
         // print out new totals
-        Log.i(TAG, getTotals().toString())
+//        Log.i(TAG, getTotals().toString())
         backgroundLayout.setBackgroundResource(R.color.dark_purple)
         instructionTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
         instructionTextView.text = getString(R.string.finished)
-        mHandler.removeCallbacksAndMessages(null);
+        mHandler.removeCallbacksAndMessages(null)
     }
 
-    private fun clearPreferences() {
-        prefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        val prefsEditor = prefs.edit()
-        prefsEditor.clear()
-        prefsEditor.apply()
-    }
+    // debugging for lastTen
+    private fun getResults() {
+        // get the list if it exists
+        fixedSizeList = if(!prefs.contains("lastTen")) {
+            ArrayList<LinkedTreeMap<String, Float>>()
+        } else {
+            val tempStr = prefs.getString("lastTen", "")
+            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
+        }
 
-    private fun getResultsList(): ArrayList<HashMap<String, Float>> {
-        val preferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        // initializes empty arraylist of HashMaps
-        val resultsList = ArrayList<HashMap<String, Float>>()
-        // the game has never been run
-        if(preferences.contains("currTrial")) {
-            // if the game has been run at least once, currTrial >= 1
-            val curr = preferences.getInt("currTrial", 1)
-            for(i in 0 until curr) {
-                resultsList.add(HashMap<String, Float>())
-                resultsList[i] = gson.fromJson(preferences.getString("Trial$i", null), HashMap<String, Float>().javaClass)
+        // loop through the list
+        for(result in fixedSizeList) {
+            // "Go" -> 1f means Go, otherwise No-Go
+            if(result["Go"] == 1f) {
+                // if goSpeed is a key, then the user succeeded, otherwise the user failed
+                if(result.contains("goSpeed")) {
+                    val goSpeed = result["goSpeed"]
+                    Log.i(TAG, "Go - Success $goSpeed")
+                } else {
+                    Log.i(TAG, "Go - Failed")
+                }
+            } else {
+                // "Success" -> 1f means success, otherwise failed
+                if(result["Success"] == 1f) {
+                    Log.i(TAG, "No-Go - Success")
+                } else {
+                    Log.i(TAG, "No-Go - Failed")
+                }
             }
         }
-        return resultsList
     }
 
-    private fun getTotals(): HashMap<String, Float> {
-        val resultsList = getResultsList()
-        val returnMap = HashMap<String, Float>()
-        var goAccuracy = 0f
-        var nogoAccuracy = 0f
-        var goAvgSpeed = 0f
-        var speedCount = 0
-        var goSuccesses = 0f
-        var nogoSuccesses = 0f
+//    private fun getResultsList(): ArrayList<HashMap<String, Float>> {
+//        val preferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+//        // initializes empty arraylist of HashMaps
+//        val resultsList = ArrayList<HashMap<String, Float>>()
+//        // the game has never been run
+//        if(preferences.contains("currTrial")) {
+//            // if the game has been run at least once, currTrial >= 1
+//            val curr = preferences.getInt("currTrial", 1)
+//            for(i in 0 until curr) {
+//                resultsList.add(HashMap<String, Float>())
+//                resultsList[i] = gson.fromJson(preferences.getString("Trial$i", null), HashMap<String, Float>().javaClass)
+//            }
+//        }
+//        return resultsList
+//    }
 
-        for(resultMap in resultsList) {
-            goAccuracy += resultMap["goAccuracy"]!!
-            nogoAccuracy += resultMap["nogoAccuracy"]!!
-            val temp = resultMap["goAvgSpeed"]!!
-            if(temp != 0f) {
-                goAvgSpeed += resultMap["goAvgSpeed"]!!
-                speedCount++
-            }
-            goSuccesses += resultMap["goSuccesses"]!!
-            nogoSuccesses += resultMap["nogoSuccesses"]!!
-        }
-        // edge case
-        if(speedCount != 0) {
-            goAvgSpeed /= speedCount
-        }
-        goAccuracy /= resultsList.size
-        nogoAccuracy /= resultsList.size
-
-        returnMap["totalGoAccuracy"] = goAccuracy
-        returnMap["totalNogoAccuracy"] = nogoAccuracy
-        returnMap["totalGoAvgSpeed"] = goAvgSpeed
-        returnMap["totalGoSuccesses"] = goSuccesses
-        returnMap["totalNogoSuccesses"] = nogoSuccesses
-        return returnMap
-    }
+//    private fun getTotals(): HashMap<String, Float> {
+//        val resultsList = getResultsList()
+//        val returnMap = HashMap<String, Float>()
+//        var goAccuracy = 0f
+//        var nogoAccuracy = 0f
+//        var goAvgSpeed = 0f
+//        var speedCount = 0
+//        var goSuccesses = 0f
+//        var nogoSuccesses = 0f
+//
+//        for(resultMap in resultsList) {
+//            goAccuracy += resultMap["goAccuracy"]!!
+//            nogoAccuracy += resultMap["nogoAccuracy"]!!
+//            val temp = resultMap["goAvgSpeed"]!!
+//            if(temp != 0f) {
+//                goAvgSpeed += resultMap["goAvgSpeed"]!!
+//                speedCount++
+//            }
+//            goSuccesses += resultMap["goSuccesses"]!!
+//            nogoSuccesses += resultMap["nogoSuccesses"]!!
+//        }
+//        // edge case
+//        if(speedCount != 0) {
+//            goAvgSpeed /= speedCount
+//        }
+//        goAccuracy /= resultsList.size
+//        nogoAccuracy /= resultsList.size
+//
+//        returnMap["totalGoAccuracy"] = goAccuracy
+//        returnMap["totalNogoAccuracy"] = nogoAccuracy
+//        returnMap["totalGoAvgSpeed"] = goAvgSpeed
+//        returnMap["totalGoSuccesses"] = goSuccesses
+//        returnMap["totalNogoSuccesses"] = nogoSuccesses
+//        return returnMap
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
         soundPool.release()
+        mHandler.removeCallbacksAndMessages(null);
     }
+
 
     companion object {
         // tag for debugging purposes
