@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_back.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\layout_stats.xml.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\layout\\stats.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_nogo_success.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\nogo_success.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\layout_play.xml.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\layout\\play.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hamburger.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\hamburger.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_legend.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\legend.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_go_success.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\go_success.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\layout_main_menu.xml.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\layout\\main_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\raw_failure.mp3.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\raw\\failure.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\font_arial.ttf.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\font\\arial.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_go_failure.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\go_failure.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_trash.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\trash.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_play.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\play.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\raw_launch.mp3.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\raw\\launch.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_nogo_failure.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\nogo_failure.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\font_artographie_light.ttf.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\font\\artographie_light.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_stats.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\background_stats.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\raw_delete.mp3.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\raw\\delete.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\raw_success.mp3.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\raw\\success.mp3"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background.png.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\drawable\\background.png"
+    },
+    {
+        "merged": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\build\\intermediates\\res\\merged\\debug\\raw_apollo_bg.mp3.flat",
+        "source": "C:\\Users\\Christian\\Documents\\GitHub\\CMSC436-group16\\Apollo\\app\\src\\main\\res\\raw\\apollo_bg.mp3"
+    }
+]
