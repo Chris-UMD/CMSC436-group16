@@ -216,121 +216,191 @@
     />
 
     <!-- SESSION DATA 1 -->
-    <ImageView
+    <TextView
         android:id="@+id/event1"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/session_start"
     />
 
     <!-- SESSION DATA 2 -->
-    <ImageView
+    <TextView
         android:id="@+id/event2"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event1"
     />
 
     <!-- SESSION DATA 3 -->
-    <ImageView
+    <TextView
         android:id="@+id/event3"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event2"
     />
 
     <!-- SESSION DATA 4 -->
-    <ImageView
+    <TextView
         android:id="@+id/event4"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event3"
     />
 
     <!-- SESSION DATA 5 -->
-    <ImageView
+    <TextView
         android:id="@+id/event5"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event4"
     />
 
     <!-- SESSION DATA 6 -->
-    <ImageView
+    <TextView
         android:id="@+id/event6"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event5"
     />
 
     <!-- SESSION DATA 7 -->
-    <ImageView
+    <TextView
         android:id="@+id/event7"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event6"
     />
 
     <!-- SESSION DATA 8 -->
-    <ImageView
+    <TextView
         android:id="@+id/event8"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event7"
     />
 
     <!-- SESSION DATA 9 -->
-    <ImageView
+    <TextView
         android:id="@+id/event9"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event8"
     />
 
     <!-- SESSION DATA 10 -->
-    <ImageView
+    <TextView
         android:id="@+id/event10"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/go_success"
+        android:fontFamily="@font/arial"
+        android:text="N/A"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/session_start"
         app:layout_constraintTop_toBottomOf="@id/event9"
     />

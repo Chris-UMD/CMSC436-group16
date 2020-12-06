@@ -1,19 +1,17 @@
 package com.example.apollo
 
 import android.content.Context
-import android.content.Intent
 import android.media.AudioAttributes
-import android.media.MediaPlayer
 import android.media.SoundPool
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import com.google.gson.Gson
+import com.google.gson.internal.LinkedTreeMap
+import java.util.ArrayList
 
 class Stats : AppCompatActivity() {
     // Logging TAG
@@ -26,7 +24,10 @@ class Stats : AppCompatActivity() {
     private var clearSound : Int = 0
 
     // event ImageView references
-    private var events: MutableList<ImageView> = mutableListOf<ImageView>()
+    private var events: MutableList<TextView> = mutableListOf<TextView>()
+
+    // data collection
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +73,8 @@ class Stats : AppCompatActivity() {
             avgNoGoAccuracyNumTextView.text = preferences.getFloat("totalNogoAccuracy", 0f).toString() + "%"
 
             // programmatically add individual session data to screen
-            displayEvents()
+            if (preferences.contains("lastTen"))
+                displayEvents()
 
         } else {
             avgAccuracyNumTextView.text = "N/A"
@@ -87,20 +89,25 @@ class Stats : AppCompatActivity() {
     private fun getEvents() {
         Log.i(TAG, "filling events list")
 
-        events.add(findViewById<ImageView>(R.id.event1))
-        events.add(findViewById<ImageView>(R.id.event2))
-        events.add(findViewById<ImageView>(R.id.event3))
-        events.add(findViewById<ImageView>(R.id.event4))
-        events.add(findViewById<ImageView>(R.id.event5))
-        events.add(findViewById<ImageView>(R.id.event6))
-        events.add(findViewById<ImageView>(R.id.event7))
-        events.add(findViewById<ImageView>(R.id.event8))
-        events.add(findViewById<ImageView>(R.id.event9))
-        events.add(findViewById<ImageView>(R.id.event10))
+        events.add(findViewById<TextView>(R.id.event1))
+        events.add(findViewById<TextView>(R.id.event2))
+        events.add(findViewById<TextView>(R.id.event3))
+        events.add(findViewById<TextView>(R.id.event4))
+        events.add(findViewById<TextView>(R.id.event5))
+        events.add(findViewById<TextView>(R.id.event6))
+        events.add(findViewById<TextView>(R.id.event7))
+        events.add(findViewById<TextView>(R.id.event8))
+        events.add(findViewById<TextView>(R.id.event9))
+        events.add(findViewById<TextView>(R.id.event10))
     }
 
     private fun displayEvents() {
         Log.i(TAG, "displaying events")
+
+        val preferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+
+        val tempStr = preferences.getString("lastTen", "")
+        val lastTen = gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
 
         val goSuccess = getDrawable(R.drawable.go_success)
         val goFailure = getDrawable(R.drawable.go_failure)
@@ -109,16 +116,35 @@ class Stats : AppCompatActivity() {
 
         val iterator = events.iterator()
 
-        // display all events
-        while (iterator.hasNext()) {
-            var view = iterator.next()
+        // loop through list and display all events
+        for(result in lastTen) {
+            // get next View
+            var view = iterator.next() as TextView
             view.visibility = View.VISIBLE
 
-            // switch case on Go ✔/❌ or No-Go ✔/❌ to set background image
-            view.background = goSuccess
-//            view.background = goFailure
-//            view.background = nogoSuccess
-//            view.background = nogoFailure
+            // if event is "Go"
+            if(result["Go"] == 1f) {
+                // if user succeeded
+                if(result.contains("goSpeed")) {
+                    val goSpeed = result["goSpeed"]
+                    view.background = goSuccess
+                    view.text = goSpeed.toString() + " sec"
+                } else {
+                    view.background = goFailure
+                    view.text = ""
+                }
+
+            // event is "No-Go"
+            } else {
+                // if user succeeded
+                if(result["Success"] == 1f) {
+                    view.background = nogoSuccess
+                    view.text = ""
+                } else {
+                    view.background = nogoFailure
+                    view.text = ""
+                }
+            }
         }
 
         // hide no events notification
