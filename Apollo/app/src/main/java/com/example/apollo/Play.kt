@@ -25,7 +25,7 @@ class Play : AppCompatActivity() {
     private lateinit var mHandler: Handler
     private lateinit var prefs: SharedPreferences
     // list of the last ten results, index 0 is oldest, index 10 is the newest
-    private lateinit var fixedSizeList : ArrayList<LinkedTreeMap<String, Float>>
+    private lateinit var fixedSizeList : ArrayList<LinkedTreeMap<String, Double>>
 
     private var finished = false
     private var waiting = true
@@ -111,10 +111,10 @@ class Play : AppCompatActivity() {
 
         // gets the list
         fixedSizeList = if(!prefs.contains("lastTen")) {
-            ArrayList<LinkedTreeMap<String, Float>>()
+            ArrayList<LinkedTreeMap<String, Double>>()
         } else {
             val tempStr = prefs.getString("lastTen", "")
-            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
+            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Double>>().javaClass)
         }
 
         // set up the initial wait screen
@@ -153,13 +153,13 @@ class Play : AppCompatActivity() {
                         Log.i(TAG, "clicked within $diffTime s")
 
                         // add a new result
-                        val tempMap = LinkedTreeMap<String, Float>()
+                        val tempMap = LinkedTreeMap<String, Double>()
                         // 1f is true, 0f is false
-                        tempMap["Go"] = 1f
+                        tempMap["Go"] = 1.0
                         // stores the goSpeed
-                        tempMap["goSpeed"] = diffTime * 1000f
+                        tempMap["goSpeed"] = diffTime * 1000.0
                         // 1f is true, 0f is false
-                        tempMap["Success"] = 1f
+                        tempMap["Success"] = 1.0
                         fixedSizeList.add(tempMap)
 
                         // if currIteration is greater
@@ -177,11 +177,11 @@ class Play : AppCompatActivity() {
                         soundPool.play(failSound,0.5f,0.5f, 1, 0, 1.0f)
 
                         // add a new result
-                        val tempMap = LinkedTreeMap<String, Float>()
+                        val tempMap = LinkedTreeMap<String, Double>()
                         // 1f is true, 0f is false
-                        tempMap["Go"] = 0f
+                        tempMap["Go"] = 0.0
                         // 1f is true, 0f is false
-                        tempMap["Success"] = 0f
+                        tempMap["Success"] = 0.0
                         fixedSizeList.add(tempMap)
 
                         mHandler.removeCallbacksAndMessages(null);
@@ -261,11 +261,11 @@ class Play : AppCompatActivity() {
             soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
 
             // add a new result
-            val tempMap = LinkedTreeMap<String, Float>()
+            val tempMap = LinkedTreeMap<String, Double>()
             // 1f is true, 0f is false
-            tempMap["Go"] = 0f
+            tempMap["Go"] = 0.0
             // 1f is true, 0f is false
-            tempMap["Success"] = 1f
+            tempMap["Success"] = 1.0
             fixedSizeList.add(tempMap)
 
             backgroundLayout.setBackgroundResource(R.color.dark_purple)
@@ -291,11 +291,11 @@ class Play : AppCompatActivity() {
             }
 
             // add a new result
-            val tempMap = LinkedTreeMap<String, Float>()
+            val tempMap = LinkedTreeMap<String, Double>()
             // 1f is true, 0f is false
-            tempMap["Go"] = 1f
+            tempMap["Go"] = 1.0
             // 1f is true, 0f is false
-            tempMap["Success"] = 0f
+            tempMap["Success"] = 0.0
             fixedSizeList.add(tempMap)
 
             backgroundLayout.setBackgroundResource(R.color.orange)
@@ -316,11 +316,11 @@ class Play : AppCompatActivity() {
             soundPool.play(successSound,0.5f,0.5f, 1, 0, 1.0f)
 
             // add a new result
-            val tempMap = LinkedTreeMap<String, Float>()
+            val tempMap = LinkedTreeMap<String, Double>()
             // 1f is true, 0f is false
-            tempMap["Go"] = 0f
+            tempMap["Go"] = 0.0
             // 1f is true, 0f is false
-            tempMap["Success"] = 1f
+            tempMap["Success"] = 1.0
             fixedSizeList.add(tempMap)
 
             finishScreen()
@@ -408,16 +408,16 @@ class Play : AppCompatActivity() {
     private fun getResults() {
         // get the list if it exists
         fixedSizeList = if(!prefs.contains("lastTen")) {
-            ArrayList<LinkedTreeMap<String, Float>>()
+            ArrayList<LinkedTreeMap<String, Double>>()
         } else {
             val tempStr = prefs.getString("lastTen", "")
-            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
+            gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Double>>().javaClass)
         }
 
         // loop through the list
         for(result in fixedSizeList) {
             // "Go" -> 1f means Go, otherwise No-Go
-            if(result["Go"] == 1f) {
+            if(result["Go"] == 1.0) {
                 // if goSpeed is a key, then the user succeeded, otherwise the user failed
                 if(result.contains("goSpeed")) {
                     val goSpeed = result["goSpeed"]
@@ -427,7 +427,7 @@ class Play : AppCompatActivity() {
                 }
             } else {
                 // "Success" -> 1f means success, otherwise failed
-                if(result["Success"] == 1f) {
+                if(result["Success"] == 1.0) {
                     Log.i(TAG, "No-Go - Success")
                 } else {
                     Log.i(TAG, "No-Go - Failed")

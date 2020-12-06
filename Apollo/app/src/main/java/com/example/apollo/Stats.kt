@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
 import java.util.ArrayList
+import kotlin.math.truncate
 
 class Stats : AppCompatActivity() {
     // Logging TAG
@@ -107,7 +108,7 @@ class Stats : AppCompatActivity() {
         val preferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
 
         val tempStr = preferences.getString("lastTen", "")
-        val lastTen = gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Float>>().javaClass)
+        val lastTen = gson.fromJson(tempStr, ArrayList<LinkedTreeMap<String, Double>>().javaClass)
 
         val goSuccess = getDrawable(R.drawable.go_success)
         val goFailure = getDrawable(R.drawable.go_failure)
@@ -123,12 +124,13 @@ class Stats : AppCompatActivity() {
             view.visibility = View.VISIBLE
 
             // if event is "Go"
-            if(result["Go"] == 1f) {
+            Log.i(TAG, result["Go"].toString())
+            if(result["Go"] == 1.0) {
                 // if user succeeded
                 if(result.contains("goSpeed")) {
                     val goSpeed = result["goSpeed"]
                     view.background = goSuccess
-                    view.text = goSpeed.toString() + " sec"
+                    view.text = truncate(goSpeed!!).toString() + " ms"
                 } else {
                     view.background = goFailure
                     view.text = ""
@@ -137,7 +139,7 @@ class Stats : AppCompatActivity() {
             // event is "No-Go"
             } else {
                 // if user succeeded
-                if(result["Success"] == 1f) {
+                if(result["Success"] == 1.0) {
                     view.background = nogoSuccess
                     view.text = ""
                 } else {
